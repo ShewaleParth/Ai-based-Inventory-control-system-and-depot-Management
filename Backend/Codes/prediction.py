@@ -4,13 +4,13 @@ import joblib
 # -----------------------------
 # 1️⃣ Load new inventory data
 # -----------------------------
-new_inventory_df = pd.read_csv(r"D:\Inventory Project\trial 01\new_inventory_for_prediction.csv")
+new_inventory_df = pd.read_csv(r"D:\Inventory Project\Backend\Dataset\realistic_inventory_10000_for_prediction.csv")
 
 # -----------------------------
 # 2️⃣ Load saved XGBoost model and label encoder
 # -----------------------------
-xgb_model = joblib.load(r"D:\Inventory Project\trial 01\xgboost_inventory_model.pkl")
-le = joblib.load(r"D:\Inventory Project\trial 01\label_encoder.pkl")
+xgb_model = joblib.load(r"D:\Inventory Project\Backend\Models\xgboost_inventory_model.pkl")
+le = joblib.load(r"D:\Inventory Project\Backend\Models\label_encoder.pkl")
 
 # -----------------------------
 # 3️⃣ Predict stock levels
@@ -55,5 +55,7 @@ print(new_inventory_df.sample(10))
 # -----------------------------
 # 7️⃣ Save to CSV
 # -----------------------------
-new_inventory_df.to_csv('predicted_inventory_with_alerts_and_priority.csv', index=False)
-print("Predictions with restock alerts and priority saved to 'predicted_inventory_with_alerts_and_priority.csv'")
+path = r"D:\Inventory Project\Backend\Prediction Output in CSV\predicted_inventory_with_alerts_and_priority.csv"
+new_inventory_df.to_csv(path, index=False)
+print(f"Predictions saved to {path}")
+
